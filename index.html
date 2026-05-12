@@ -1,0 +1,1010 @@
+# SiteNova Studio – Full Business Website Code
+
+Save this as `index.html` and open it in your browser.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SiteNova Studio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#050505;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    body::-webkit-scrollbar{
+      width:8px;
+    }
+
+    body::-webkit-scrollbar-thumb{
+      background:#d4af37;
+      border-radius:10px;
+    }
+
+    header{
+      width:100%;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:1000;
+      backdrop-filter:blur(12px);
+      background:rgba(0,0,0,0.6);
+      border-bottom:1px solid rgba(255,255,255,0.1);
+    }
+
+    nav{
+      width:90%;
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 0;
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:700;
+      color:#d4af37;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:25px;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:white;
+      font-weight:500;
+      transition:0.3s;
+    }
+
+    .nav-links a:hover{
+      color:#d4af37;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:120px 20px 50px;
+      background:linear-gradient(to bottom right,#050505,#111111,#1a1a1a);
+      position:relative;
+    }
+
+    .hero::before{
+      content:'';
+      position:absolute;
+      width:400px;
+      height:400px;
+      background:#d4af37;
+      filter:blur(150px);
+      opacity:0.25;
+      top:0;
+      left:0;
+    }
+
+    .hero::after{
+      content:'';
+      position:absolute;
+      width:400px;
+      height:400px;
+      background:#f5deb3;
+      filter:blur(150px);
+      opacity:0.25;
+      bottom:0;
+      right:0;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      max-width:900px;
+    }
+
+    .hero h1{
+      font-size:65px;
+      line-height:1.2;
+      margin-bottom:20px;
+    }
+
+    .hero span{
+      color:#d4af37;
+    }
+
+    .hero p{
+      font-size:20px;
+      color:#cbd5e1;
+      margin-bottom:35px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:14px 32px;
+      border:none;
+      border-radius:50px;
+      text-decoration:none;
+      font-size:16px;
+      font-weight:600;
+      transition:0.3s;
+      display:inline-block;
+    }
+
+    .primary-btn{
+      background:#d4af37;
+      color:white;
+      box-shadow:0 0 25px rgba(212,175,55,0.5);
+    }
+
+    .primary-btn:hover{
+      transform:translateY(-3px);
+      background:#b8932f;
+    }
+
+    .secondary-btn{
+      border:2px solid #d4af37;
+      color:white;
+    }
+
+    .secondary-btn:hover{
+      background:#d4af37;
+      transform:translateY(-3px);
+    }
+
+    section{
+      padding:100px 10%;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-size:42px;
+      margin-bottom:15px;
+      color:#d4af37;
+    }
+
+    .section-title p{
+      color:#cbd5e1;
+    }
+
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .service-card{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      padding:35px 25px;
+      border-radius:20px;
+      transition:0.4s;
+      backdrop-filter:blur(10px);
+    }
+
+    .service-card:hover{
+      transform:translateY(-10px);
+      border-color:#d4af37;
+      box-shadow:0 0 30px rgba(212,175,55,0.2);
+    }
+
+    .service-card h3{
+      margin-bottom:15px;
+      color:#d4af37;
+    }
+
+    .service-card p{
+      color:#cbd5e1;
+      font-size:15px;
+      line-height:1.8;
+    }
+
+    .portfolio-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:25px;
+    }
+
+    .portfolio-card{
+      background:#111111;
+      border-radius:20px;
+      overflow:hidden;
+      transition:0.4s;
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .portfolio-card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 0 25px rgba(212,175,55,0.3);
+    }
+
+    .demo-badge{
+      position:absolute;
+      top:15px;
+      right:15px;
+      background:#d4af37;
+      color:white;
+      padding:6px 14px;
+      border-radius:50px;
+      font-size:12px;
+      font-weight:600;
+    }
+
+    .portfolio-card{
+      position:relative;
+    }
+
+    .demo-buttons{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:20px;
+    }
+
+    .small-btn{
+      padding:10px 20px;
+      font-size:14px;
+    }
+
+    .portfolio-image{
+      height:220px;
+      background:linear-gradient(135deg,#d4af37,#f5deb3);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-size:26px;
+      font-weight:700;
+    }
+
+    .portfolio-content{
+      padding:25px;
+    }
+
+    .portfolio-content h3{
+      margin-bottom:10px;
+    }
+
+    .portfolio-content p{
+      color:#cbd5e1;
+      font-size:15px;
+      line-height:1.7;
+    }
+
+    .about{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:50px;
+      align-items:center;
+    }
+
+    .about-image{
+      background:linear-gradient(135deg,#d4af37,#f5deb3);
+      height:400px;
+      border-radius:25px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-size:42px;
+      font-weight:700;
+    }
+
+    .about-text h2{
+      font-size:42px;
+      margin-bottom:20px;
+      color:#d4af37;
+    }
+
+    .about-text p{
+      color:#cbd5e1;
+      line-height:1.9;
+      margin-bottom:18px;
+    }
+
+    .contact-box{
+      background:rgba(255,255,255,0.05);
+      border-radius:25px;
+      padding:50px;
+      border:1px solid rgba(255,255,255,0.08);
+      text-align:center;
+    }
+
+    .contact-box h2{
+      font-size:40px;
+      color:#d4af37;
+      margin-bottom:15px;
+    }
+
+    .contact-box p{
+      color:#cbd5e1;
+      margin-bottom:35px;
+    }
+
+    .contact-buttons{
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    footer{
+      text-align:center;
+      padding:30px 20px;
+      border-top:1px solid rgba(255,255,255,0.08);
+      color:#94a3b8;
+    }
+
+    .telegram-float{
+      position:fixed;
+      bottom:20px;
+      right:20px;
+      background:#d4af37;
+      width:60px;
+      height:60px;
+      border-radius:50%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      color:white;
+      font-size:28px;
+      text-decoration:none;
+      box-shadow:0 0 20px rgba(212,175,55,0.6);
+      z-index:1000;
+      transition:0.3s;
+    }
+
+    .telegram-float:hover{
+      transform:scale(1.1);
+      background:#b8932f;
+    }
+
+    #loader{
+      position:fixed;
+      width:100%;
+      height:100vh;
+      background:#050505;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      z-index:99999;
+      transition:1s;
+    }
+
+    .loader-text{
+      font-size:42px;
+      font-weight:700;
+      color:#d4af37;
+      letter-spacing:2px;
+      animation:pulse 1.5s infinite;
+    }
+
+    @keyframes pulse{
+      0%{opacity:0.4;transform:scale(0.95);}
+      50%{opacity:1;transform:scale(1);}
+      100%{opacity:0.4;transform:scale(0.95);}
+    }
+
+    .animate{
+      opacity:0;
+      transform:translateY(60px);
+      transition:1s ease;
+    }
+
+    .animate.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .testimonial-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:25px;
+    }
+
+    .testimonial-card{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      padding:30px;
+      border-radius:20px;
+      transition:0.4s;
+    }
+
+    .testimonial-card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 0 20px rgba(212,175,55,0.2);
+    }
+
+    .testimonial-card h3{
+      color:#d4af37;
+      margin-bottom:10px;
+    }
+
+    .testimonial-card p{
+      color:#cbd5e1;
+      line-height:1.8;
+    }
+
+    .pricing-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:25px;
+    }
+
+    .pricing-card{
+      background:#111111;
+      border:1px solid rgba(255,255,255,0.08);
+      padding:40px 30px;
+      border-radius:25px;
+      text-align:center;
+      transition:0.4s;
+    }
+
+    .pricing-card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 0 30px rgba(212,175,55,0.3);
+    }
+
+    .pricing-card h3{
+      color:#d4af37;
+      margin-bottom:15px;
+      font-size:28px;
+    }
+
+    .price{
+      font-size:42px;
+      font-weight:700;
+      margin-bottom:20px;
+    }
+
+    .pricing-card ul{
+      list-style:none;
+      margin-bottom:30px;
+    }
+
+    .pricing-card ul li{
+      margin:12px 0;
+      color:#cbd5e1;
+    }
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:42px;
+      }
+
+      .hero p{
+        font-size:17px;
+      }
+
+      .nav-links{
+        display:none;
+      }
+
+      section{
+        padding:80px 6%;
+      }
+
+      .section-title h2,
+      .about-text h2,
+      .contact-box h2{
+        font-size:32px;
+      }
+
+      .contact-box{
+        padding:35px 25px;
+      }
+
+    }
+  </style>
+</head>
+<body>
+
+  <div id="loader">
+    <div class="loader-text">SiteNova Studio</div>
+  </div>
+
+  <header>
+    <nav>
+      <div class="logo">SiteNova Studio</div>
+
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#demo-services">Demos</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Create Modern Websites With <span>SiteNova Studio</span></h1>
+
+      <p>
+        We build premium websites for businesses, weddings, events,
+        portfolios, booking systems and landing pages.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#demo-services" class="btn primary-btn">View Live Demos</a>
+
+        <a href="https://t.me/Official_Sahil_007" class="btn secondary-btn" target="_blank">
+          Contact on Telegram
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="animate">
+
+    <div class="section-title">
+      <h2>Our Services</h2>
+      <p>Professional websites with modern UI and responsive design</p>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <h3>Wedding Invitation Websites</h3>
+        <p>
+          Beautiful digital invitation websites with RSVP,
+          countdown timers, gallery and background music.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <h3>Business Landing Pages</h3>
+        <p>
+          High converting landing pages for brands,
+          startups and local businesses.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <h3>Event Management Websites</h3>
+        <p>
+          Event booking systems, registration forms,
+          event showcases and ticket pages.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <h3>Portfolio Websites</h3>
+        <p>
+          Modern portfolio websites for freelancers,
+          creators and professionals.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <h3>Booking Systems</h3>
+        <p>
+          Appointment booking forms integrated with
+          WhatsApp and Telegram notifications.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <h3>Responsive Design</h3>
+        <p>
+          Fully responsive websites optimized for mobile,
+          tablet and desktop devices.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="demo-services" class="animate">
+
+    <div class="section-title">
+      <h2>Service Demos</h2>
+      <p>Preview demo layouts for different services by SiteNova Studio</p>
+    </div>
+
+    <div class="portfolio-grid">
+
+      <div class="portfolio-card">
+        <div class="demo-badge">Premium Demo</div>
+        <div class="portfolio-image">Wedding Invitation</div>
+
+        <div class="portfolio-content">
+          <h3>Luxury Marathi Wedding Invitation</h3>
+          <p>
+            Premium Marathi wedding invitation website with hero section,
+            bride & groom profiles, countdown timer, wedding functions,
+            gallery, RSVP form, venue map, background music and share buttons.
+          </p>
+
+          <div style="margin-top:18px;color:#d4af37;font-size:14px;line-height:2;">
+            ✨ Countdown Timer<br>
+            ✨ RSVP Form<br>
+            ✨ Couple Gallery<br>
+            ✨ Background Music<br>
+            ✨ Google Maps Integration<br>
+            ✨ Mobile Responsive Design
+          </div>
+
+          <br>
+
+          <div class="demo-buttons">
+            <a href="#" class="btn primary-btn small-btn">Live Demo</a>
+            <a href="#contact" class="btn secondary-btn small-btn">Get Website</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <div class="portfolio-image">Landing</div>
+
+        <div class="portfolio-content">
+          <h3>Business Landing Page Demo</h3>
+          <p>
+            Modern landing page design for startups,
+            agencies and local businesses.
+          </p>
+
+          <br>
+
+          <div class="demo-buttons">
+            <a href="#" class="btn primary-btn small-btn">Live Demo</a>
+            <a href="#contact" class="btn secondary-btn small-btn">Get Website</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <div class="portfolio-image">Booking</div>
+
+        <div class="portfolio-content">
+          <h3>Appointment Booking Demo</h3>
+          <p>
+            Online appointment booking system with Telegram
+            and WhatsApp integration.
+          </p>
+
+          <br>
+
+          <div class="demo-buttons">
+            <a href="#" class="btn primary-btn small-btn">Live Demo</a>
+            <a href="#contact" class="btn secondary-btn small-btn">Get Website</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <div class="portfolio-image">Portfolio</div>
+
+        <div class="portfolio-content">
+          <h3>Portfolio Website Demo</h3>
+          <p>
+            Clean and responsive personal portfolio website
+            for freelancers and creators.
+          </p>
+
+          <br>
+
+          <div class="demo-buttons">
+            <a href="#" class="btn primary-btn small-btn">Live Demo</a>
+            <a href="#contact" class="btn secondary-btn small-btn">Get Website</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <div class="portfolio-image">Event</div>
+
+        <div class="portfolio-content">
+          <h3>Event Website Demo</h3>
+          <p>
+            Event showcase website with registration form,
+            gallery and event details.
+          </p>
+
+          <br>
+
+          <div class="demo-buttons">
+            <a href="#" class="btn primary-btn small-btn">Live Demo</a>
+            <a href="#contact" class="btn secondary-btn small-btn">Get Website</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <div class="portfolio-image">Restaurant</div>
+
+        <div class="portfolio-content">
+          <h3>Restaurant Website Demo</h3>
+          <p>
+            Responsive restaurant website with menu,
+            reservation system and contact details.
+          </p>
+
+          <br>
+
+          <div class="demo-buttons">
+            <a href="#" class="btn primary-btn small-btn">Live Demo</a>
+            <a href="#contact" class="btn secondary-btn small-btn">Get Website</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="portfolio" class="animate">
+
+    <div class="section-title">
+      <h2>Our Portfolio</h2>
+      <p>Some modern website projects by SiteNova Studio</p>
+    </div>
+
+    <div class="portfolio-grid">
+
+      <div class="portfolio-card">
+        <div class="portfolio-image">Wedding</div>
+
+        <div class="portfolio-content">
+          <h3>Wedding Invitation Website</h3>
+          <p>
+            Elegant wedding invitation website with music,
+            photo gallery, RSVP and animations.
+          </p>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <div class="portfolio-image">Business</div>
+
+        <div class="portfolio-content">
+          <h3>Business Landing Page</h3>
+          <p>
+            Clean and modern landing page for growing businesses
+            with responsive layout.
+          </p>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <div class="portfolio-image">Event</div>
+
+        <div class="portfolio-content">
+          <h3>Event Website</h3>
+          <p>
+            Event management website with registration,
+            booking form and contact integration.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="testimonials" class="animate">
+
+    <div class="section-title">
+      <h2>Client Testimonials</h2>
+      <p>What our clients say about SiteNova Studio</p>
+    </div>
+
+    <div class="testimonial-grid">
+
+      <div class="testimonial-card">
+        <h3>Rahul Sharma</h3>
+        <p>
+          Amazing website design and smooth experience.
+          Highly recommended for business websites.
+        </p>
+      </div>
+
+      <div class="testimonial-card">
+        <h3>Priya Events</h3>
+        <p>
+          Beautiful invitation website with premium design
+          and fast delivery.
+        </p>
+      </div>
+
+      <div class="testimonial-card">
+        <h3>FitZone Gym</h3>
+        <p>
+          Modern landing page design helped us get more
+          customer inquiries online.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="pricing" class="animate">
+
+    <div class="section-title">
+      <h2>Pricing Plans</h2>
+      <p>Affordable website packages for every business</p>
+    </div>
+
+    <div class="pricing-grid">
+
+      <div class="pricing-card">
+        <h3>Basic</h3>
+        <div class="price">₹999</div>
+
+        <ul>
+          <li>1 Page Website</li>
+          <li>Responsive Design</li>
+          <li>Contact Buttons</li>
+          <li>Fast Delivery</li>
+        </ul>
+
+        <a href="#contact" class="btn primary-btn">Choose Plan</a>
+      </div>
+
+      <div class="pricing-card">
+        <h3>Standard</h3>
+        <div class="price">₹2999</div>
+
+        <ul>
+          <li>Multi Page Website</li>
+          <li>Premium Design</li>
+          <li>Animations</li>
+          <li>Mobile Responsive</li>
+        </ul>
+
+        <a href="#contact" class="btn primary-btn">Choose Plan</a>
+      </div>
+
+      <div class="pricing-card">
+        <h3>Premium</h3>
+        <div class="price">₹5999</div>
+
+        <ul>
+          <li>Custom Website</li>
+          <li>Booking System</li>
+          <li>Telegram Integration</li>
+          <li>Premium Support</li>
+        </ul>
+
+        <a href="#contact" class="btn primary-btn">Choose Plan</a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="about" class="animate">
+
+    <div class="about">
+
+      <div class="about-image">
+        SiteNova
+      </div>
+
+      <div class="about-text">
+        <h2>About Us</h2>
+
+        <p>
+          SiteNova Studio is a modern web design studio focused on creating
+          stylish and responsive websites for businesses, weddings,
+          events and personal brands.
+        </p>
+
+        <p>
+          We create premium UI designs, landing pages, booking systems,
+          invitation websites and modern digital experiences.
+        </p>
+
+        <p>
+          Our goal is to help businesses and creators build a strong
+          online presence with fast and attractive websites.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="contact" class="animate">
+
+    <div class="contact-box">
+
+      <h2>Let's Build Your Website</h2>
+
+      <p>
+        Ready to grow your business online?
+        Contact SiteNova Studio today.
+      </p>
+
+      <div class="contact-buttons">
+
+        <a href="https://t.me/Official_Sahil_007" class="btn primary-btn" target="_blank">
+          Telegram
+        </a>
+
+        <a href="https://wa.me/919999999999" class="btn secondary-btn" target="_blank">
+          WhatsApp
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer>
+    <p>© 2026 SiteNova Studio. All Rights Reserved.</p>
+  </footer>
+
+  <a href="https://t.me/Official_Sahil_007" class="telegram-float" target="_blank">
+    ✈
+  </a>
+
+  <script>
+
+    window.addEventListener('load',()=>{
+      document.getElementById('loader').style.opacity='0';
+
+      setTimeout(()=>{
+        document.getElementById('loader').style.display='none';
+      },1000);
+    });
+
+    const observer=new IntersectionObserver((entries)=>{
+      entries.forEach((entry)=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+        }
+      });
+    });
+
+    document.querySelectorAll('.animate').forEach((el)=>{
+      observer.observe(el);
+    });
+
+    window.addEventListener('scroll',()=>{
+      const header=document.querySelector('header');
+
+      if(window.scrollY>50){
+        header.style.background='rgba(0,0,0,0.85)';
+      }
+      else{
+        header.style.background='rgba(0,0,0,0.6)';
+      }
+    });
+
+  </script>
+
+</body>
+</html>
+```
+
