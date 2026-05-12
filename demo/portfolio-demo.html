@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alex Carter | Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#050505;
+color:white;
+overflow-x:hidden;
+}
+
+body::-webkit-scrollbar{
+width:8px;
+}
+
+body::-webkit-scrollbar-thumb{
+background:#d4af37;
+border-radius:20px;
+}
+
+/* NAVBAR */
+
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+z-index:1000;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+nav{
+width:90%;
+margin:auto;
+padding:20px 0;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:28px;
+font-weight:700;
+color:#d4af37;
+}
+
+.nav-links{
+display:flex;
+gap:30px;
+}
+
+.nav-links a{
+text-decoration:none;
+color:white;
+font-weight:500;
+transition:0.3s;
+}
+
+.nav-links a:hover{
+color:#d4af37;
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:120px 10%;
+background:
+linear-gradient(to bottom right,#050505,#111111,#1a1a1a);
+position:relative;
+}
+
+.hero::before{
+content:'';
+position:absolute;
+width:400px;
+height:400px;
+background:#d4af37;
+filter:blur(180px);
+opacity:0.15;
+top:0;
+left:0;
+}
+
+.hero-content{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:60px;
+align-items:center;
+width:100%;
+max-width:1300px;
+z-index:2;
+}
+
+.hero-text h3{
+font-size:22px;
+color:#d4af37;
+margin-bottom:15px;
+}
+
+.hero-text h1{
+font-size:80px;
+line-height:1.1;
+margin-bottom:25px;
+}
+
+.hero-text p{
+font-size:18px;
+line-height:2;
+color:#d0d0d0;
+margin-bottom:40px;
+}
+
+.hero-image{
+text-align:center;
+}
+
+.hero-image img{
+width:100%;
+max-width:420px;
+height:520px;
+object-fit:cover;
+border-radius:35px;
+border:3px solid #d4af37;
+box-shadow:0 20px 50px rgba(0,0,0,0.5);
+}
+
+/* BUTTONS */
+
+.btn{
+display:inline-block;
+padding:15px 36px;
+border-radius:50px;
+text-decoration:none;
+font-weight:600;
+transition:0.3s;
+font-size:15px;
+}
+
+.btn-gold{
+background:#d4af37;
+color:black;
+box-shadow:0 0 25px rgba(212,175,55,0.4);
+}
+
+.btn-gold:hover{
+transform:translateY(-4px);
+background:#f1cc5d;
+}
+
+.btn-outline{
+border:2px solid #d4af37;
+color:white;
+margin-left:15px;
+}
+
+.btn-outline:hover{
+background:#d4af37;
+color:black;
+transform:translateY(-4px);
+}
+
+/* SECTION */
+
+section{
+padding:100px 10%;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:70px;
+}
+
+.section-title h2{
+font-size:58px;
+color:#d4af37;
+margin-bottom:15px;
+}
+
+.section-title p{
+color:#bdbdbd;
+}
+
+/* ABOUT */
+
+.about{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:60px;
+align-items:center;
+}
+
+.about-card{
+background:#111111;
+padding:40px;
+border-radius:30px;
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.about-card h3{
+font-size:34px;
+margin-bottom:20px;
+color:#d4af37;
+}
+
+.about-card p{
+line-height:2;
+color:#d0d0d0;
+}
+
+/* SKILLS */
+
+.skills-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+}
+
+.skill-card{
+background:#111111;
+padding:35px 25px;
+border-radius:25px;
+text-align:center;
+transition:0.4s;
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.skill-card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 25px rgba(212,175,55,0.2);
+}
+
+.skill-card h3{
+font-size:26px;
+margin-bottom:12px;
+color:#d4af37;
+}
+
+.skill-card p{
+color:#d0d0d0;
+}
+
+/* PROJECTS */
+
+.project-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+}
+
+.project-card{
+background:#111111;
+border-radius:30px;
+overflow:hidden;
+transition:0.4s;
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.project-card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 30px rgba(212,175,55,0.2);
+}
+
+.project-card img{
+width:100%;
+height:240px;
+object-fit:cover;
+}
+
+.project-content{
+padding:30px;
+}
+
+.project-content h3{
+font-size:30px;
+margin-bottom:15px;
+color:#d4af37;
+}
+
+.project-content p{
+line-height:1.9;
+color:#d0d0d0;
+margin-bottom:25px;
+}
+
+/* TESTIMONIALS */
+
+.testimonial-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.testimonial-card{
+background:#111111;
+padding:35px;
+border-radius:25px;
+border:1px solid rgba(255,255,255,0.08);
+transition:0.4s;
+}
+
+.testimonial-card:hover{
+transform:translateY(-10px);
+}
+
+.testimonial-card h3{
+margin-bottom:12px;
+color:#d4af37;
+}
+
+.testimonial-card p{
+line-height:1.9;
+color:#d0d0d0;
+}
+
+/* CONTACT */
+
+.contact-box{
+max-width:900px;
+margin:auto;
+background:#111111;
+padding:60px;
+border-radius:35px;
+text-align:center;
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.contact-box p{
+line-height:2;
+color:#d0d0d0;
+margin-bottom:30px;
+}
+
+/* FOOTER */
+
+footer{
+background:#111111;
+padding:40px 20px;
+text-align:center;
+color:#999;
+}
+
+footer h3{
+font-size:40px;
+margin-bottom:10px;
+color:#d4af37;
+}
+
+/* ANIMATION */
+
+.animate{
+opacity:0;
+transform:translateY(60px);
+transition:1s ease;
+}
+
+.animate.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero-text h1{
+font-size:52px;
+}
+
+.section-title h2{
+font-size:42px;
+}
+
+.hero{
+padding-top:140px;
+}
+
+.nav-links{
+display:none;
+}
+
+.btn-outline{
+margin-left:0;
+margin-top:15px;
+display:block;
+}
+
+.contact-box{
+padding:35px 25px;
+}
+
+section{
+padding:80px 6%;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+
+<header>
+
+<nav>
+
+<div class="logo">Alex Carter</div>
+
+<div class="nav-links">
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</div>
+
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<div class="hero-text">
+
+<h3>Creative Web Designer</h3>
+
+<h1>
+Building Premium Digital Experiences
+</h1>
+
+<p>
+I create modern websites, premium UI designs,
+responsive landing pages and creative digital experiences
+for brands and businesses worldwide.
+</p>
+
+<a href="#projects" class="btn btn-gold">
+View Projects
+</a>
+
+<a href="#contact" class="btn btn-outline">
+Hire Me
+</a>
+
+</div>
+
+<div class="hero-image">
+
+<img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about" class="animate">
+
+<div class="section-title">
+<h2>About Me</h2>
+<p>Creative developer with modern design vision</p>
+</div>
+
+<div class="about">
+
+<div class="about-card">
+
+<h3>Who Am I?</h3>
+
+<p>
+I specialize in premium website design,
+UI/UX experiences and responsive web development.
+My passion is creating beautiful and functional
+digital products that help businesses grow online.
+</p>
+
+</div>
+
+<div class="about-card">
+
+<h3>Experience</h3>
+
+<p>
+3+ years of experience building modern websites,
+business landing pages, portfolio websites and
+premium digital interfaces using modern technologies.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SKILLS -->
+
+<section id="skills" class="animate">
+
+<div class="section-title">
+<h2>My Skills</h2>
+<p>Technologies and tools I work with</p>
+</div>
+
+<div class="skills-grid">
+
+<div class="skill-card">
+<h3>HTML5</h3>
+<p>Modern semantic web structure</p>
+</div>
+
+<div class="skill-card">
+<h3>CSS3</h3>
+<p>Responsive premium UI design</p>
+</div>
+
+<div class="skill-card">
+<h3>JavaScript</h3>
+<p>Interactive frontend development</p>
+</div>
+
+<div class="skill-card">
+<h3>UI/UX</h3>
+<p>Creative modern interface design</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects" class="animate">
+
+<div class="section-title">
+<h2>Featured Projects</h2>
+<p>Some premium projects and designs</p>
+</div>
+
+<div class="project-grid">
+
+<div class="project-card">
+
+<img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop">
+
+<div class="project-content">
+
+<h3>Business Website</h3>
+
+<p>
+Modern business website with premium design,
+responsive layout and interactive animations.
+</p>
+
+<a href="#" class="btn btn-gold">
+Live Demo
+</a>
+
+</div>
+
+</div>
+
+<div class="project-card">
+
+<img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=1200&auto=format&fit=crop">
+
+<div class="project-content">
+
+<h3>Portfolio Design</h3>
+
+<p>
+Luxury portfolio website with elegant UI,
+smooth animations and mobile responsiveness.
+</p>
+
+<a href="#" class="btn btn-gold">
+Live Demo
+</a>
+
+</div>
+
+</div>
+
+<div class="project-card">
+
+<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop">
+
+<div class="project-content">
+
+<h3>Landing Page</h3>
+
+<p>
+Premium landing page focused on conversion,
+branding and modern user experience.
+</p>
+
+<a href="#" class="btn btn-gold">
+Live Demo
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- TESTIMONIALS -->
+
+<section class="animate">
+
+<div class="section-title">
+<h2>Client Reviews</h2>
+<p>What clients say about my work</p>
+</div>
+
+<div class="testimonial-grid">
+
+<div class="testimonial-card">
+
+<h3>Michael Johnson</h3>
+
+<p>
+Amazing design quality and very professional work.
+Highly recommended for premium website projects.
+</p>
+
+</div>
+
+<div class="testimonial-card">
+
+<h3>Sarah Williams</h3>
+
+<p>
+Beautiful UI design and smooth communication.
+The website exceeded our expectations.
+</p>
+
+</div>
+
+<div class="testimonial-card">
+
+<h3>David Smith</h3>
+
+<p>
+Modern responsive website delivered on time
+with excellent support and creative design.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact" class="animate">
+
+<div class="section-title">
+<h2>Let's Work Together</h2>
+<p>Available for freelance projects</p>
+</div>
+
+<div class="contact-box">
+
+<p>
+📧 alexcarter@email.com<br><br>
+
+📍 New York, USA<br><br>
+
+📱 +1 987 654 3210
+</p>
+
+<a href="#" class="btn btn-gold">
+Contact Me
+</a>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<h3>Alex Carter</h3>
+
+<p>
+Premium Portfolio Website © 2026
+</p>
+
+</footer>
+
+<script>
+
+const observer = new IntersectionObserver((entries)=>{
+
+entries.forEach((entry)=>{
+
+if(entry.isIntersecting){
+entry.target.classList.add('show');
+}
+
+});
+
+});
+
+document.querySelectorAll('.animate').forEach((el)=>{
+observer.observe(el);
+});
+
+</script>
+
+</body>
+</html>
